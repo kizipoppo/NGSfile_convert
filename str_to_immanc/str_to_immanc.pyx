@@ -10,7 +10,7 @@ cimport numpy as np
 
 def str_to_immanc(pop, ind, loc, table):
 
-    cdef int nind=len(table)//2, k=0
+    cdef int nind=len(table), k=0
     cdef list pop_array=[], ind_array=[], loc_array=[]
     cdef np.ndarray dat = np.zeros([nind*table.shape[1], 2], int)
 
@@ -19,8 +19,8 @@ def str_to_immanc(pop, ind, loc, table):
             pop_array.append(pop[i*2])
             ind_array.append(ind[i*2])
             loc_array.append(loc[n])
-            dat[k, 0] = table[i*2, n]
-            dat[k, 1] = table[i*2+1, n]
+            dat[k, 0] = table[i, n*2]
+            dat[k, 1] = table[i, n*2+1]
             k += 1
 
     cdef np.ndarray file = npDataFrame(pop_array, ind_array, loc_array, dat, k)
