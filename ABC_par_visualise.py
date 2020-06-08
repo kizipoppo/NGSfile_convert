@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Apr 2 2020
+Created on Mon June 8 2020
 
 @author: ShunIto
 """
@@ -19,6 +19,8 @@ def main():
     model.extract()
     model.const()
     model.save_png(args.output)
+    model.save_jpg(args.output)
+    model.save_eps(args.output)
 
 
 class visualise_scenario():
@@ -92,11 +94,14 @@ class visualise_scenario():
         self.im.show()
 
     def save_png(self, output):
-        self.im.save(output)
+        self.im.save(output + ".png")
 
     def save_jpg(self, output, quality=95):
         self.quality=quality
-        self.im.save(output, quality=self.quality)
+        self.im.save(output + ".jpg", quality=self.quality)
+
+    def save_eps(self, output):
+        self.im.save(output + ".eps")
 
 
 def get_args():
