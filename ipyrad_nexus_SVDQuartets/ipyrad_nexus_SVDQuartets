@@ -1,0 +1,11 @@
+#!/bin/sh
+
+f=${1}
+cat $f|sed -e "s/BEGIN SETS;/BEGIN SETS;\ncharpartition loci=/g" |sed -e '/^charset/s/ //gi'|sed -e '/^charset/s/=/:/gi'|sed -e '/^charset/s/;/,/gi'>imm.nex
+sed.py imm2.nex
+rm imm.nex
+nrow=`cat imm2.nex |wc -l`
+cat imm2.nex| sed -e "$((${nrow})) s/,/;/g" > svgq_${1}
+rm imm2.nex
+echo "Process have been finished!!"
+
