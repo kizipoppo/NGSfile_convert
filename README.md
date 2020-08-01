@@ -13,3 +13,6 @@ NGS output file converter. Those were created for ipyrad or pyrad output files.
   Convert structure formated file, which was inserted information of location, into arp formated file.
 6. ABC_par_visualise.py
   Visualise the par formated file.
+7. ipyrad_nexus_SVDQuartets
+  Edit the nexus file from ipyrad to analyse in SVGQuartets.
+  
